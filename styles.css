@@ -63,6 +63,7 @@ input {
   inset: 0;
   min-height: 100svh;
   overflow: hidden;
+  padding: clamp(18px, 4vh, 44px) 0;
   position: fixed;
   z-index: 6;
 }
@@ -84,30 +85,32 @@ input {
 
 .countdown-gate__content {
   margin: 0 auto;
-  max-width: 980px;
+  max-width: 860px;
   padding: 0 24px;
   position: relative;
   width: 100%;
 }
 
 .countdown-gate h1 {
-  max-width: 900px;
+  font-size: clamp(2.65rem, 6.6vw, 5.3rem);
+  line-height: 0.98;
+  max-width: 780px;
 }
 
 .countdown-gate__copy {
   color: var(--muted);
-  font-size: clamp(1.05rem, 2vw, 1.4rem);
-  line-height: 1.7;
-  margin: 24px 0 0;
-  max-width: 660px;
+  font-size: clamp(1rem, 1.7vw, 1.25rem);
+  line-height: 1.55;
+  margin: 18px 0 0;
+  max-width: 620px;
 }
 
 .countdown-clock {
   display: grid;
-  gap: 12px;
+  gap: 10px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: 34px;
-  max-width: 760px;
+  margin-top: 24px;
+  max-width: 680px;
 }
 
 .countdown-clock span {
@@ -117,8 +120,8 @@ input {
   color: var(--muted);
   display: grid;
   gap: 6px;
-  min-height: 118px;
-  padding: 18px 12px;
+  min-height: 92px;
+  padding: 14px 10px;
   place-items: center;
   text-align: center;
   text-transform: uppercase;
@@ -127,7 +130,7 @@ input {
 .countdown-clock strong {
   color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2rem, 5vw, 4.4rem);
+  font-size: clamp(1.9rem, 4vw, 3.35rem);
   font-weight: 700;
   line-height: 0.9;
 }
@@ -135,7 +138,7 @@ input {
 .countdown-gate__date {
   color: var(--rose);
   font-weight: 700;
-  margin: 18px 0 0;
+  margin: 14px 0 0;
 }
 
 .hero {
@@ -463,6 +466,26 @@ h2 {
 }
 
 @media (max-width: 800px) {
+  .countdown-gate {
+    align-items: start;
+    padding-top: max(20px, env(safe-area-inset-top));
+  }
+
+  .countdown-gate__content {
+    padding: 0 18px;
+  }
+
+  .countdown-gate h1 {
+    font-size: clamp(2.1rem, 12vw, 3.5rem);
+    line-height: 1;
+  }
+
+  .countdown-gate__copy {
+    font-size: 1rem;
+    line-height: 1.45;
+    margin-top: 14px;
+  }
+
   .hero {
     background-position: 58% center;
     min-height: 88svh;
@@ -493,11 +516,41 @@ h2 {
   }
 
   .countdown-clock {
+    gap: 8px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 18px;
   }
 
   .countdown-clock span {
-    min-height: 104px;
+    min-height: 84px;
+    padding: 12px 8px;
+  }
+
+  .countdown-clock strong {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
+  .countdown-gate__date {
+    font-size: 0.92rem;
+    margin-top: 12px;
+  }
+}
+
+@media (max-height: 680px) {
+  .countdown-gate h1 {
+    font-size: clamp(2.15rem, 5.8vw, 4.1rem);
+  }
+
+  .countdown-gate__copy {
+    margin-top: 12px;
+  }
+
+  .countdown-clock {
+    margin-top: 16px;
+  }
+
+  .countdown-clock span {
+    min-height: 76px;
   }
 }
 
