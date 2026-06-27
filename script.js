@@ -13,6 +13,70 @@ const starMessage = document.querySelector("[data-star-message]");
 const wishForm = document.querySelector("[data-wish-form]");
 const wishInput = document.querySelector("#wish-input");
 const savedWish = document.querySelector("[data-saved-wish]");
+const countdownGate = document.querySelector("[data-countdown-gate]");
+const giftContent = document.querySelector("[data-gift-content]");
+const countdownDays = document.querySelector("[data-countdown-days]");
+const countdownHours = document.querySelector("[data-countdown-hours]");
+const countdownMinutes = document.querySelector("[data-countdown-minutes]");
+const countdownSeconds = document.querySelector("[data-countdown-seconds]");
+const countdownDate = document.querySelector("[data-countdown-date]");
+
+function getNextMidnight() {
+  const now = new Date();
+  const target = new Date(now);
+  target.setHours(24, 0, 0, 0);
+  return target;
+}
+
+const unlockAt = getNextMidnight();
+
+function formatCountdown(value) {
+  return String(value).padStart(2, "0");
+}
+
+function unlockGift() {
+  document.body.classList.remove("gift-locked");
+  giftContent.removeAttribute("aria-hidden");
+  countdownGate.classList.add("is-open");
+  burst(120, window.innerWidth / 2, window.innerHeight * 0.45);
+  window.setTimeout(() => {
+    countdownGate.hidden = true;
+  }, 900);
+}
+
+function updateCountdown() {
+  const remaining = unlockAt.getTime() - Date.now();
+  if (remaining <= 0) {
+    unlockGift();
+    return;
+  }
+
+  const totalSeconds = Math.floor(remaining / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  countdownDays.textContent = formatCountdown(days);
+  countdownHours.textContent = formatCountdown(hours);
+  countdownMinutes.textContent = formatCountdown(minutes);
+  countdownSeconds.textContent = formatCountdown(seconds);
+}
+
+giftContent.setAttribute("aria-hidden", "true");
+countdownDate.textContent = `Se desbloquea a las 00:00 del ${unlockAt.toLocaleDateString("es-CL", {
+  day: "2-digit",
+  month: "long",
+  year: "numeric",
+})}.`;
+updateCountdown();
+const countdownTimer = window.setInterval(() => {
+  if (countdownGate.hidden) {
+    window.clearInterval(countdownTimer);
+    return;
+  }
+  updateCountdown();
+}, 1000);
 
 function resizeCanvas() {
   canvas.width = window.innerWidth * window.devicePixelRatio;

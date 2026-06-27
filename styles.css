@@ -27,6 +27,11 @@ body {
   letter-spacing: 0;
 }
 
+body.gift-locked {
+  height: 100svh;
+  overflow: hidden;
+}
+
 button,
 input {
   font: inherit;
@@ -37,6 +42,100 @@ input {
   pointer-events: none;
   position: fixed;
   z-index: 8;
+}
+
+.gift-content {
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.gift-locked .gift-content {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(18px);
+}
+
+.countdown-gate {
+  align-items: center;
+  background-image: url("assets/birthday-romance-hero.png");
+  background-position: center;
+  background-size: cover;
+  display: grid;
+  inset: 0;
+  min-height: 100svh;
+  overflow: hidden;
+  position: fixed;
+  z-index: 6;
+}
+
+.countdown-gate.is-open {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.02);
+  transition: opacity 800ms ease, transform 900ms ease;
+}
+
+.countdown-gate__shade {
+  background:
+    linear-gradient(90deg, rgba(7, 18, 37, 0.9), rgba(7, 18, 37, 0.48)),
+    linear-gradient(180deg, rgba(7, 18, 37, 0.34), rgba(40, 19, 49, 0.92));
+  inset: 0;
+  position: absolute;
+}
+
+.countdown-gate__content {
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 0 24px;
+  position: relative;
+  width: 100%;
+}
+
+.countdown-gate h1 {
+  max-width: 900px;
+}
+
+.countdown-gate__copy {
+  color: var(--muted);
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  line-height: 1.7;
+  margin: 24px 0 0;
+  max-width: 660px;
+}
+
+.countdown-clock {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 34px;
+  max-width: 760px;
+}
+
+.countdown-clock span {
+  background: rgba(255, 248, 239, 0.11);
+  border: 1px solid rgba(255, 248, 239, 0.24);
+  border-radius: 8px;
+  color: var(--muted);
+  display: grid;
+  gap: 6px;
+  min-height: 118px;
+  padding: 18px 12px;
+  place-items: center;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.countdown-clock strong {
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 5vw, 4.4rem);
+  font-weight: 700;
+  line-height: 0.9;
+}
+
+.countdown-gate__date {
+  color: var(--rose);
+  font-weight: 700;
+  margin: 18px 0 0;
 }
 
 .hero {
@@ -391,6 +490,14 @@ h2 {
 
   .wish-form__row .button {
     width: 100%;
+  }
+
+  .countdown-clock {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .countdown-clock span {
+    min-height: 104px;
   }
 }
 

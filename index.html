@@ -10,10 +10,40 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="gift-locked">
     <canvas class="sky-canvas" aria-hidden="true"></canvas>
 
-    <main>
+    <section class="countdown-gate" data-countdown-gate aria-labelledby="countdown-title">
+      <div class="countdown-gate__shade"></div>
+      <div class="countdown-gate__content">
+        <p class="eyebrow">Todav&iacute;a no es la hora</p>
+        <h1 id="countdown-title">Yo esperar&eacute; toda la vida para estar contigo</h1>
+        <p class="countdown-gate__copy">
+          Mientras tanto, t&uacute; deber&aacute;s esperar hasta las 00:00 para descubrir tu regalo.
+        </p>
+        <div class="countdown-clock" aria-label="Tiempo restante para abrir el regalo">
+          <span>
+            <strong data-countdown-days>00</strong>
+            d&iacute;as
+          </span>
+          <span>
+            <strong data-countdown-hours>00</strong>
+            horas
+          </span>
+          <span>
+            <strong data-countdown-minutes>00</strong>
+            minutos
+          </span>
+          <span>
+            <strong data-countdown-seconds>00</strong>
+            segundos
+          </span>
+        </div>
+        <p class="countdown-gate__date" data-countdown-date></p>
+      </div>
+    </section>
+
+    <main class="gift-content" data-gift-content>
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__shade"></div>
         <div class="hero__content">
