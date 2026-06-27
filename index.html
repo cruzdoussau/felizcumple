@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Feliz cumpleaños, mi casi amor</title>
+    <meta
+      name="description"
+      content="Una página romántica e interactiva para celebrar su cumpleaños."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas class="sky-canvas" aria-hidden="true"></canvas>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__shade"></div>
+        <div class="hero__content">
+          <p class="eyebrow">Una noche guardada para ti</p>
+          <h1 id="hero-title">Feliz cumpleaños, futura novia mía</h1>
+          <p class="hero__copy">
+            Hoy celebro tu vida, tu risa y esa forma tan tuya de convertir
+            cualquier día en algo que quiero recordar.
+          </p>
+          <div class="hero__actions" aria-label="Acciones principales">
+            <button class="button button--primary" data-open-letter>
+              Abrir la carta
+            </button>
+            <button class="button button--ghost" data-sparkle>
+              Encender la noche
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="letter-band" aria-labelledby="letter-title">
+        <div class="section-shell letter">
+          <div class="letter__intro">
+            <p class="eyebrow">Una carta pequeña</p>
+            <h2 id="letter-title">Para cuando quieras sonreír sin avisar</h2>
+          </div>
+          <div class="letter__paper">
+            <p data-typewriter>
+              Si pudiera envolver un deseo, le pondría tu nombre. Que este
+              cumpleaños te encuentre rodeada de cariño, calma y motivos para
+              creer que lo más bonito todavía viene en camino. Yo, por mi
+              parte, ya estoy agradecido de coincidir contigo.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="wish-band" aria-labelledby="wish-title">
+        <div class="section-shell">
+          <div class="section-heading">
+            <p class="eyebrow">Siete velitas</p>
+            <h2 id="wish-title">Un deseo por cada latido bonito</h2>
+          </div>
+          <div class="candle-grid" data-candles>
+            <button class="candle-card" type="button">
+              <span class="flame"></span>
+              <span>Que nunca te falten ganas de bailar.</span>
+            </button>
+            <button class="candle-card" type="button">
+              <span class="flame"></span>
+              <span>Que tus días tengan paz y risas largas.</span>
+            </button>
+            <button class="candle-card" type="button">
+              <span class="flame"></span>
+              <span>Que cada sueño encuentre una puerta abierta.</span>
+            </button>
+            <button class="candle-card" type="button">
+              <span class="flame"></span>
+              <span>Que te quieran bonito, claro y sin dudas.</span>
+            </button>
+            <button class="candle-card" type="button">
+              <span class="flame"></span>
+              <span>Que la vida te sorprenda con ternura.</span>
+            </button>
+            <button class="candle-card" type="button">
+              <span class="flame"></span>
+              <span>Que siempre recuerdes lo especial que eres.</span>
+            </button>
+            <button class="candle-card candle-card--final" type="button">
+              <span class="flame"></span>
+              <span>Y que algún día pueda decirte esto mirándote a los ojos.</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="stars-band" aria-labelledby="stars-title">
+        <div class="section-shell stars-layout">
+          <div class="section-heading">
+            <p class="eyebrow">Constelación</p>
+            <h2 id="stars-title">Cosas que me gustan de ti</h2>
+          </div>
+          <div class="star-field" data-star-field aria-live="polite">
+            <button class="star-dot star-dot--one" data-message="Tu manera de iluminar una conversación."></button>
+            <button class="star-dot star-dot--two" data-message="La dulzura que se te escapa incluso sin intentarlo."></button>
+            <button class="star-dot star-dot--three" data-message="Esa risa que hace que todo pese menos."></button>
+            <button class="star-dot star-dot--four" data-message="Lo fácil que es imaginar planes bonitos contigo."></button>
+            <button class="star-dot star-dot--five" data-message="Tu forma de hacer que el tiempo se sienta especial."></button>
+            <p class="star-message" data-star-message>
+              El cielo también tenía algo que decirte.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="promise-band" aria-labelledby="promise-title">
+        <div class="section-shell promise">
+          <div>
+            <p class="eyebrow">Mi deseo final</p>
+            <h2 id="promise-title">Que este sea el comienzo de muchos momentos tuyos y míos</h2>
+          </div>
+          <form class="wish-form" data-wish-form>
+            <label for="wish-input">Un deseo secreto para ella</label>
+            <div class="wish-form__row">
+              <input
+                id="wish-input"
+                name="wish"
+                type="text"
+                maxlength="80"
+                placeholder="Escribe algo que quieras prometerle..."
+                autocomplete="off"
+              />
+              <button class="button button--primary" type="submit">Guardar</button>
+            </div>
+          </form>
+          <p class="saved-wish" data-saved-wish aria-live="polite"></p>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="modal" data-letter-modal>
+      <button class="modal__close" type="button" data-close-letter aria-label="Cerrar carta">x</button>
+      <p class="eyebrow">Solo para ti</p>
+      <h2>Feliz cumpleaños, preciosa</h2>
+      <p>
+        No sé si el destino sabe escribir historias, pero sí sabe juntar
+        miradas, conversaciones y ganas. En tu cumpleaños quiero pedirle que
+        te cuide, que te sorprenda, y que me deje estar cerquita cuando llegue
+        el próximo capítulo.
+      </p>
+      <button class="button button--primary" data-modal-sparkle>Sellar con luz</button>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>
