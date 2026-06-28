@@ -28,6 +28,7 @@ function getNextMidnight() {
   return target;
 }
 
+const countdownEnabled = false;
 const unlockAt = getNextMidnight();
 
 function formatCountdown(value) {
@@ -63,20 +64,24 @@ function updateCountdown() {
   countdownSeconds.textContent = formatCountdown(seconds);
 }
 
-giftContent.setAttribute("aria-hidden", "true");
-countdownDate.textContent = `Se desbloquea a las 00:00 del ${unlockAt.toLocaleDateString("es-CL", {
-  day: "2-digit",
-  month: "long",
-  year: "numeric",
-})}.`;
-updateCountdown();
-const countdownTimer = window.setInterval(() => {
-  if (countdownGate.hidden) {
-    window.clearInterval(countdownTimer);
-    return;
-  }
+if (countdownEnabled) {
+  document.body.classList.add("gift-locked");
+  countdownGate.hidden = false;
+  giftContent.setAttribute("aria-hidden", "true");
+  countdownDate.textContent = `Se desbloquea a las 00:00 del ${unlockAt.toLocaleDateString("es-CL", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  })}.`;
   updateCountdown();
-}, 1000);
+  const countdownTimer = window.setInterval(() => {
+    if (countdownGate.hidden) {
+      window.clearInterval(countdownTimer);
+      return;
+    }
+    updateCountdown();
+  }, 1000);
+}
 
 function resizeCanvas() {
   canvas.width = window.innerWidth * window.devicePixelRatio;
